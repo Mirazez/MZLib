@@ -1,0 +1,5 @@
+count: 5
+loop_actions:
+  - "[MESSAGE] 123 %loop_number%"
+end_actions:
+  - "[MESSAGE] 123"

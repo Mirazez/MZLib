@@ -1,0 +1,13 @@
+name: MZLib
+version: '1.0'
+main: me.mozarez.aurora.mzlib.MZLib
+api-version: '1.19'
+authors: [ mozarez ]
+folia-supported: true
+libraries:
+  - "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0"
+  - "net.kyori:adventure-text-minimessage:4.17.0"
+  - "net.kyori:adventure-text-serializer-legacy:4.17.0"
+  - "net.kyori:adventure-platform-bukkit:4.3.4"
+  - "org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0"
+  - "net.objecthunter:exp4j:0.4.8"
