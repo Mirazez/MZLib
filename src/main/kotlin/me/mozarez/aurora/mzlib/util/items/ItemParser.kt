@@ -4,7 +4,6 @@ import com.nexomc.nexo.api.NexoItems
 import io.lumine.mythic.lib.player.modifier.ModifierSource
 import io.th0rgal.oraxen.api.OraxenItems
 import me.mozarez.aurora.mzlib.MZLib.Companion.instance
-import me.mozarez.aurora.mzlib.util.other.ObjectUtil.toIntOr
 import net.Indyuce.mmoitems.MMOItems
 import net.Indyuce.mmoitems.api.Type
 import net.Indyuce.mmoitems.api.crafting.ConfigMMOItem
@@ -240,7 +239,7 @@ object ItemParser {
                     val splittedTwo = splitted[0].split(":")
                     item = ItemStack(Material.valueOf(splittedTwo[0]))
                     val meta = item.itemMeta
-                    meta.setCustomModelData(splittedTwo[1].toIntOr(0))
+                    meta.setCustomModelData(splittedTwo[1].toIntOrNull() ?: 0)
                     item.itemMeta = meta
                 } catch (_: Exception) {
                     throw IllegalArgumentException("Невозможно прочитать $string")
@@ -252,11 +251,11 @@ object ItemParser {
 
     fun parseAmount(s: String?): Int {
         if (s?.contains("~") == true) {
-            s.split("~").map { it.toIntOr(1) }.let { splitted ->
+            s.split("~").map { it.toIntOrNull() ?: 1 }.let { splitted ->
                 return splitted[0].rangeTo(splitted[1]).random()
             }
         }
-        return s.toIntOr(1)
+        return s?.toIntOrNull() ?: 1
     }
 
 }

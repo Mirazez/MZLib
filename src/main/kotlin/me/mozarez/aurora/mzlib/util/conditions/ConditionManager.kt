@@ -4,11 +4,9 @@ import me.clip.placeholderapi.PlaceholderAPI
 import me.mozarez.aurora.mzlib.MZLib.Companion.instance
 import me.mozarez.aurora.mzlib.util.adventure.MiniMessageUtil.logErr
 import me.mozarez.aurora.mzlib.util.exp4j.Exp4jOperators
-import me.mozarez.aurora.mzlib.util.other.ObjectUtil.toIntOr
 import net.Indyuce.mmoitems.MMOItems
 import net.objecthunter.exp4j.ExpressionBuilder
 import org.bukkit.entity.Player
-import kotlin.math.min
 
 object ConditionManager {
 
@@ -62,12 +60,7 @@ object ConditionManager {
     }
 
     fun invokeList(conditions: List<String>, player: Player? = null) : Boolean {
-        val condList = ArrayList<Boolean>()
-        for (cond in conditions) {
-            val condition = PlaceholderAPI.setPlaceholders(player, cond)
-            condList.add(invoke(condition, player))
-        }
-        return condList.all { it }
+        return conditions.map { invoke(PlaceholderAPI.setPlaceholders(player, it), player) }.all { it }
     }
 
 }

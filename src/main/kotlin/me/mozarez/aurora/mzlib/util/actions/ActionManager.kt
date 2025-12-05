@@ -9,7 +9,6 @@ import me.mozarez.aurora.mzlib.util.adventure.MiniMessageUtil.withMapStr
 import me.mozarez.aurora.mzlib.util.items.ItemParser
 import me.mozarez.aurora.mzlib.util.items.ItemParser.takeItem
 import me.mozarez.aurora.mzlib.util.items.ItemParser.takeMMOItem
-import me.mozarez.aurora.mzlib.util.other.ObjectUtil.toIntOr
 import net.Indyuce.mmoitems.MMOItems
 import net.luckperms.api.LuckPermsProvider
 import net.luckperms.api.node.Node
@@ -107,9 +106,7 @@ object ActionManager {
     }
 
     fun invokeList(lines: List<String>, player: Player?, update: Consumer<Player>? = null, placeholders: Map<String, String>? = null) {
-        for (line in lines) {
-            invoke(line, player, update, placeholders)
-        }
+        lines.forEach { invoke(it,player,update,placeholders) }
     }
 
     fun invoke(line: String, player: Player?, update: Consumer<Player>? = null, placeholders: Map<String, String>? = null) {
